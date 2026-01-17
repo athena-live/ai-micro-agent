@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fine vs Coarse | AIMicroAgent.com</title>
+  <meta name="description" content="Clear definitions, pros/cons, and when to use fine-grain or coarse-grain agents.">
+  <meta property="og:title" content="Fine vs Coarse | AIMicroAgent">
+  <meta property="og:description" content="Clear definitions, pros/cons, and the recommended hybrid model.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://AIMicroAgent.com/fine-vs-coarse.html">
+  <meta property="og:image" content="assets/og-aimicroagent.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html">AIMicroAgent</a>
+      <div class="nav-links">
+        <a href="approach.html">Approach</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="fine-vs-coarse.html">Fine vs Coarse</a>
+        <a href="docs.html">Docs</a>
+      </div>
+      <a class="nav-cta" href="docs.html">Read the Guide</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="badge">Design Choice</span>
+        <h1 class="fade-in">Fine-grain vs coarse-grain agents</h1>
+        <p class="fade-in delay-1">Fine-grain agents are strict, typed, and predictable. Coarse-grain agents plan and execute broad goals with more autonomy.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Fine-grain micro-agents</h2>
+      <p class="lead"><strong>Definition:</strong> very small, single task, strict schema, minimal discretion. Examples: “extract invoice total”, “classify intent”, “redact PII”.</p>
+      <div class="grid">
+        <div class="card"><h3>Pros</h3><p>Highly testable + predictable; cheap + fast; easy to swap/upgrade; easy to secure (limited tool access).</p></div>
+        <div class="card"><h3>Cons</h3><p>More orchestration complexity; more hops can add latency if poorly designed.</p></div>
+        <div class="card"><h3>Use when</h3><p>You need structured outputs, compliance matters, workflows repeat, and reliability at scale is required.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Coarse-grain agents</h2>
+      <p class="lead"><strong>Definition:</strong> bigger scope, can plan multi-step work, more autonomy. Example: “handle customer onboarding end-to-end”.</p>
+      <div class="grid">
+        <div class="card"><h3>Pros</h3><p>Fewer handoffs; good for ambiguous problems; faster to prototype.</p></div>
+        <div class="card"><h3>Cons</h3><p>Harder to test and govern; more prompt drift; debugging becomes archaeology.</p></div>
+        <div class="card"><h3>Use when</h3><p>Domain is ambiguous, early prototype stage, and a single owner agent makes sense behind policies.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Recommended hybrid model</h2>
+      <div class="grid">
+        <div class="card"><h3>Coarse-grain for planning</h3><p>Use coarse-grain agents for intent understanding + planning.</p></div>
+        <div class="card"><h3>Fine-grain for typed core</h3><p>Use fine-grain agents for extraction, validation, compliance, and final formatting.</p></div>
+        <div class="card"><h3>Workflow glue</h3><p>Coarse-grain agents orchestrate. Fine-grain agents are the typed core.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:hello@aimicroagent.com">hello@aimicroagent.com</a>
+      <a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <div>Powered by <a href="https://Athena.Live" target="_blank" rel="noreferrer">Athena.Live</a></div>
+    <div>&copy; 2024 AIMicroAgent.com. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

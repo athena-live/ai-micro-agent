@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approach | AIMicroAgent.com</title>
+  <meta name="description" content="Agents as microservices: contracts, observability, governance, and composability.">
+  <meta property="og:title" content="Approach | AIMicroAgent">
+  <meta property="og:description" content="Why agents as microservices works and how to design crisp contracts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://AIMicroAgent.com/approach.html">
+  <meta property="og:image" content="assets/og-aimicroagent.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html">AIMicroAgent</a>
+      <div class="nav-links">
+        <a href="approach.html">Approach</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="fine-vs-coarse.html">Fine vs Coarse</a>
+        <a href="docs.html">Docs</a>
+      </div>
+      <a class="nav-cta" href="architecture.html">View Architecture</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="badge">Agents As Services</span>
+        <h1 class="fade-in">Agents are services.</h1>
+        <p class="fade-in delay-1">Treat every agent like a microservice: define a contract, measure it, version it, and keep it replaceable.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why “agents as microservices” works</h2>
+      <div class="grid">
+        <div class="card"><h3>Single responsibility</h3><p>Less prompt bloat, less ambiguity.</p></div>
+        <div class="card"><h3>Replaceability</h3><p>Swap one agent without re-training the whole system.</p></div>
+        <div class="card"><h3>Testability</h3><p>Unit-test agent outputs with fixtures + eval rubrics.</p></div>
+        <div class="card"><h3>Reliability</h3><p>Isolate failures; retry or fallback per agent.</p></div>
+        <div class="card"><h3>Scalability</h3><p>Parallelize micro-agents; cheaper than “one big brain”.</p></div>
+        <div class="card"><h3>Governance</h3><p>Permissions per agent (e.g., finance agent can’t email).</p></div>
+        <div class="card"><h3>Observability</h3><p>Metrics by agent: latency, cost, success rate.</p></div>
+        <div class="card"><h3>Versioning</h3><p>Agents are APIs; release v2 safely with canaries.</p></div>
+        <div class="card"><h3>Composability</h3><p>Build higher-level workflows from primitives.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>The key: crisp contracts</h2>
+      <p class="lead">Every micro-agent should have: Name + purpose, inputs (typed), outputs (typed), allowed tools + permissions, guardrails, evaluation rubric, known failure modes + fallback behavior.</p>
+      <div class="code-block" id="contract-template">
+<pre>{
+  "name": "ExtractorAgent",
+  "purpose": "Extract invoice totals into a strict schema.",
+  "inputs": {
+    "document_text": "string",
+    "currency": "string"
+  },
+  "outputs": {
+    "invoice_total": "number",
+    "confidence": "number"
+  },
+  "allowed_tools": ["ocr.read", "json.validate"],
+  "guardrails": ["no external calls", "no PII leakage"],
+  "eval_rubric": ["schema valid", "total matches source"],
+  "failure_modes": ["ambiguous totals", "missing currency"],
+  "fallback": "Escalate to ValidatorAgent"
+}</pre>
+      </div>
+      <button class="copy-btn" data-copy="contract-template">Copy</button>
+    </section>
+
+    <section class="section">
+      <h2>Operational pillars</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Contracts</h3>
+          <p>Input/output schema + tool boundaries. Everything is typed, auditable, and versioned.</p>
+        </div>
+        <div class="card">
+          <h3>Observability</h3>
+          <p>Traces, evals, cost, latency, and regression alerts per agent.</p>
+        </div>
+        <div class="card">
+          <h3>Governance</h3>
+          <p>Permissions, PII boundaries, and audit logs for every tool invocation.</p>
+        </div>
+        <div class="card">
+          <h3>Versioning</h3>
+          <p>Ship v1/v2 agents like APIs with canary rollouts.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:hello@aimicroagent.com">hello@aimicroagent.com</a>
+      <a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <div>Powered by <a href="https://Athena.Live" target="_blank" rel="noreferrer">Athena.Live</a></div>
+    <div>&copy; 2024 AIMicroAgent.com. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

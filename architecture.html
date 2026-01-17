@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture | AIMicroAgent.com</title>
+  <meta name="description" content="Reference architecture for an AI micro-agent mesh with router, planner, supervisor, and validator patterns.">
+  <meta property="og:title" content="Architecture | AIMicroAgent">
+  <meta property="og:description" content="Reference architecture for micro-agents with contracts, tool permissions, and evals.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://AIMicroAgent.com/architecture.html">
+  <meta property="og:image" content="assets/og-aimicroagent.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html">AIMicroAgent</a>
+      <div class="nav-links">
+        <a href="approach.html">Approach</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="fine-vs-coarse.html">Fine vs Coarse</a>
+        <a href="docs.html">Docs</a>
+      </div>
+      <a class="nav-cta" href="catalog.html">Agent Catalog</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="badge">Reference Design</span>
+        <h1 class="fade-in">The Agent Mesh</h1>
+        <p class="fade-in delay-1">A composable mesh of micro-agents orchestrated by routers, planners, supervisors, and validators.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Orchestrator patterns</h2>
+      <p class="lead">Router → tool-calling agent. Planner → executes chain. Supervisor → monitors + retries. Validator → enforces schema and policy.</p>
+      <div class="grid">
+        <div class="card"><h3>Router</h3><p>Classifies intent and chooses the right micro-agent.</p></div>
+        <div class="card"><h3>Planner</h3><p>Breaks goals into steps and dispatches tasks.</p></div>
+        <div class="card"><h3>Supervisor</h3><p>Monitors execution, retries, and fallbacks.</p></div>
+        <div class="card"><h3>Validator</h3><p>Ensures outputs match schema and policies.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reference architecture diagram</h2>
+      <div class="diagram">
+        <svg viewBox="0 0 860 320" role="img" aria-label="Agent mesh architecture">
+          <rect x="20" y="130" width="110" height="60" rx="18" fill="#0d7a6d"/>
+          <text x="75" y="165" text-anchor="middle" fill="#f5f4f0" font-family="IBM Plex Mono" font-size="12">Request</text>
+
+          <rect x="160" y="90" width="140" height="140" rx="20" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="230" y="150" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Router</text>
+
+          <rect x="330" y="90" width="150" height="140" rx="20" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="405" y="150" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Planner</text>
+
+          <rect x="520" y="40" width="160" height="80" rx="20" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="600" y="85" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Extractor</text>
+
+          <rect x="520" y="140" width="160" height="80" rx="20" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="600" y="185" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Writer</text>
+
+          <rect x="520" y="240" width="160" height="80" rx="20" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="600" y="285" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Policy</text>
+
+          <rect x="710" y="130" width="130" height="60" rx="18" fill="#1f4d99"/>
+          <text x="775" y="165" text-anchor="middle" fill="#f5f4f0" font-family="IBM Plex Mono" font-size="12">Validator</text>
+
+          <line x1="130" y1="160" x2="160" y2="160" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="300" y1="160" x2="330" y2="160" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="480" y1="160" x2="520" y2="80" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="480" y1="160" x2="520" y2="180" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="480" y1="160" x2="520" y2="280" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="680" y1="180" x2="710" y2="160" stroke="#1a1a18" stroke-width="2"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Interfaces</h2>
+      <p class="lead">Interfaces are JSON schemas, function signatures, and policies that define what an agent can do.</p>
+      <div class="code-block" id="interface-template">
+<pre>{
+  "agent": "ValidatorAgent",
+  "inputs": {
+    "schema": "json_schema",
+    "candidate_output": "object",
+    "policy": "compliance_rules"
+  },
+  "outputs": {
+    "valid": "boolean",
+    "violations": "string[]",
+    "normalized_output": "object"
+  },
+  "tools": ["schema.check", "policy.redact"],
+  "policy": ["no external calls"],
+  "eval": ["schema valid", "no PII leakage"]
+}</pre>
+      </div>
+      <button class="copy-btn" data-copy="interface-template">Copy</button>
+    </section>
+
+    <section class="section">
+      <h2>Composability patterns</h2>
+      <div class="grid">
+        <div class="card"><h3>Pipelines</h3><p>A → B → C transform chain.</p></div>
+        <div class="card"><h3>Fan-out</h3><p>A → {B, C, D} in parallel.</p></div>
+        <div class="card"><h3>Router</h3><p>Classify intent → choose agent.</p></div>
+        <div class="card"><h3>Supervisor</h3><p>Retries + fallback agent.</p></div>
+        <div class="card"><h3>Validator</h3><p>Ensure schema + constraints.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:hello@aimicroagent.com">hello@aimicroagent.com</a>
+      <a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <div>Powered by <a href="https://Athena.Live" target="_blank" rel="noreferrer">Athena.Live</a></div>
+    <div>&copy; 2024 AIMicroAgent.com. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

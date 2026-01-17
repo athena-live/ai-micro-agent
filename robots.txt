@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://AIMicroAgent.com/sitemap.xml

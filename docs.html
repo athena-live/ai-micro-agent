@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docs | AIMicroAgent.com</title>
+  <meta name="description" content="Getting started with micro-agents: contracts, composition patterns, evaluation, and pitfalls.">
+  <meta property="og:title" content="Docs | AIMicroAgent">
+  <meta property="og:description" content="What is a micro-agent, how to design contracts, compose, and evaluate.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://AIMicroAgent.com/docs.html">
+  <meta property="og:image" content="assets/og-aimicroagent.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html">AIMicroAgent</a>
+      <div class="nav-links">
+        <a href="approach.html">Approach</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="fine-vs-coarse.html">Fine vs Coarse</a>
+        <a href="docs.html">Docs</a>
+      </div>
+      <a class="nav-cta" href="catalog.html">Explore Catalog</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="badge">Getting Started</span>
+        <h1 class="fade-in">Design, compose, and evaluate micro-agents</h1>
+        <p class="fade-in delay-1">A lightweight playbook for building reliable agent meshes.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What is a micro-agent?</h2>
+      <p class="lead">A micro-agent is a single-purpose agent with typed inputs/outputs, explicit tools, and measurable behavior. It behaves like a microservice.</p>
+    </section>
+
+    <section class="section">
+      <h2>How to design contracts</h2>
+      <p class="lead">Define inputs, outputs, tools, guardrails, and known failure modes before writing prompts.</p>
+      <div class="code-block" id="starter-contract">
+<pre>{
+  "name": "ClassifierAgent",
+  "purpose": "Route intent to the right workflow.",
+  "inputs": { "query": "string" },
+  "outputs": { "intent": "string" },
+  "allowed_tools": ["none"],
+  "guardrails": ["no external calls"],
+  "eval_rubric": ["intent matches taxonomy"],
+  "failure_modes": ["ambiguous intent"],
+  "fallback": "SupervisorAgent"
+}</pre>
+      </div>
+      <button class="copy-btn" data-copy="starter-contract">Copy</button>
+    </section>
+
+    <section class="section">
+      <h2>How to compose</h2>
+      <p class="lead">Start with a router and planner, then fan out to small, typed agents. Validate at the edges.</p>
+      <div class="code-block" id="starter-compose">
+<pre>{
+  "flow": [
+    "RouterAgent",
+    "PlannerAgent",
+    ["ExtractorAgent", "WriterAgent", "PolicyAgent"],
+    "ValidatorAgent"
+  ]
+}</pre>
+      </div>
+      <button class="copy-btn" data-copy="starter-compose">Copy</button>
+    </section>
+
+    <section class="section">
+      <h2>How to evaluate</h2>
+      <p class="lead">Run evals per agent with fixtures and rubrics. Aggregate metrics for the mesh.</p>
+      <div class="code-block" id="starter-eval">
+<pre>{
+  "agent": "ExtractorAgent",
+  "fixtures": ["invoice_001", "invoice_002"],
+  "rubric": ["schema valid", "totals match source"],
+  "threshold": 0.9
+}</pre>
+      </div>
+      <button class="copy-btn" data-copy="starter-eval">Copy</button>
+    </section>
+
+    <section class="section">
+      <h2>Common pitfalls</h2>
+      <div class="grid">
+        <div class="card"><h3>Overloaded prompts</h3><p>Split responsibilities and keep I/O typed.</p></div>
+        <div class="card"><h3>Missing guardrails</h3><p>Define tool boundaries and policy checks early.</p></div>
+        <div class="card"><h3>Skipping evals</h3><p>Test each agent in isolation before orchestration.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:hello@aimicroagent.com">hello@aimicroagent.com</a>
+      <a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <div>Powered by <a href="https://Athena.Live" target="_blank" rel="noreferrer">Athena.Live</a></div>
+    <div>&copy; 2024 AIMicroAgent.com. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

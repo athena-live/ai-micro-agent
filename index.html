@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIMicroAgent.com | AI Agents, Built Like Microservices</title>
+  <meta name="description" content="Composable micro-agents with clear contracts, predictable behavior, and production-grade reliability.">
+  <meta property="og:title" content="AI Agents, Built Like Microservices">
+  <meta property="og:description" content="Stop building monolithic AI assistants. Build an agent mesh of small agents with crisp contracts.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://AIMicroAgent.com/">
+  <meta property="og:image" content="assets/og-aimicroagent.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html">AIMicroAgent</a>
+      <div class="nav-links">
+        <a href="approach.html">Approach</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="fine-vs-coarse.html">Fine vs Coarse</a>
+        <a href="docs.html">Docs</a>
+      </div>
+      <a class="nav-cta" href="architecture.html">View Architecture</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="badge">Agent Mesh Doctrine</span>
+        <h1 class="fade-in">AI Agents, Built Like Microservices.</h1>
+        <p class="fade-in delay-1">Composable micro-agents with clear contracts, predictable behavior, and production-grade reliability.</p>
+        <div class="hero-cta fade-in delay-2">
+          <a class="button primary" href="architecture.html">View Architecture</a>
+          <a class="button secondary" href="docs.html">Get Starter Template</a>
+        </div>
+        <p class="lead fade-in delay-3"><a href="approach.html">Read the Agent Design Guide →</a></p>
+      </div>
+      <div class="diagram fade-in delay-3" aria-label="Reference architecture diagram">
+        <svg viewBox="0 0 640 360" role="img" aria-label="User to router, planner, micro-agents, validator">
+          <defs>
+            <linearGradient id="node" x1="0" x2="1">
+              <stop offset="0%" stop-color="#0d7a6d"/>
+              <stop offset="100%" stop-color="#1f4d99"/>
+            </linearGradient>
+          </defs>
+          <rect x="30" y="150" width="90" height="60" rx="16" fill="url(#node)"/>
+          <text x="75" y="184" text-anchor="middle" fill="#f5f4f0" font-family="IBM Plex Mono" font-size="12">User</text>
+
+          <rect x="150" y="120" width="110" height="120" rx="18" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="205" y="165" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Router</text>
+
+          <rect x="300" y="120" width="120" height="120" rx="18" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="360" y="165" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Planner</text>
+
+          <rect x="460" y="70" width="130" height="70" rx="18" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="525" y="110" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Extractor</text>
+
+          <rect x="460" y="160" width="130" height="70" rx="18" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="525" y="200" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Writer</text>
+
+          <rect x="460" y="250" width="130" height="70" rx="18" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="525" y="290" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Policy</text>
+
+          <rect x="600" y="150" width="120" height="70" rx="18" fill="#ffffff" stroke="#1a1a18" transform="translate(-20,0)"/>
+          <text x="640" y="190" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Validator</text>
+
+          <line x1="120" y1="180" x2="150" y2="180" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="260" y1="180" x2="300" y2="180" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="420" y1="180" x2="460" y2="105" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="420" y1="180" x2="460" y2="195" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="420" y1="180" x2="460" y2="285" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="590" y1="195" x2="620" y2="195" stroke="#1a1a18" stroke-width="2"/>
+          <text x="610" y="226" fill="#575450" font-family="IBM Plex Mono" font-size="10">Response</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Monolithic agents are brittle.</h2>
+      <p class="lead">One giant assistant blends intent, execution, policy, and formatting into a single prompt. That means opaque failures, unpredictable drift, and testing that feels like archaeology.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Hard to test</h3>
+          <p>Behavior is tangled, so you cannot isolate a failure or add reliable fixtures.</p>
+        </div>
+        <div class="card">
+          <h3>Hard to govern</h3>
+          <p>Permissions and tool usage bleed across every task with no boundaries.</p>
+        </div>
+        <div class="card">
+          <h3>Hard to scale</h3>
+          <p>Each improvement risks regressions everywhere else.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Micro-agents with crisp contracts.</h2>
+      <p class="lead">Stop building monolithic AI assistants. Build an agent mesh of small agents with crisp contracts. Each agent has a single responsibility, typed I/O, and explicit guardrails.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Composable workflows</h3>
+          <p>Micro-agents chain together like microservices and can be orchestrated in parallel.</p>
+        </div>
+        <div class="card">
+          <h3>Replaceable components</h3>
+          <p>Swap one agent without retraining the whole system or rewriting your prompts.</p>
+        </div>
+        <div class="card">
+          <h3>Observable behavior</h3>
+          <p>Metrics by agent: latency, cost, success rate, and failure modes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How it works</h2>
+      <p class="lead">Request → Router → Agents → Tools → Result. Each hop is a typed contract with observability and policy checks.</p>
+    </section>
+
+    <section class="section">
+      <h2>Doctrine: micro-agents as services</h2>
+      <div class="grid">
+        <div class="card"><h3>Single responsibility</h3><p>Less prompt bloat, less ambiguity.</p></div>
+        <div class="card"><h3>Contracts</h3><p>Inputs + outputs are typed and enforced.</p></div>
+        <div class="card"><h3>Replaceability</h3><p>Swap one agent without retraining the whole system.</p></div>
+        <div class="card"><h3>Observability</h3><p>Latency, cost, and success rate per agent.</p></div>
+        <div class="card"><h3>Governance</h3><p>Permissions per agent; finance cannot email.</p></div>
+        <div class="card"><h3>Versioning</h3><p>Agents are APIs; release v2 safely.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Fine-grain vs coarse-grain</h2>
+      <p class="lead">Fine-grain micro-agents are strict, typed, and predictable. Coarse-grain agents plan and adapt. The best systems blend both.</p>
+      <table class="table" aria-label="Fine vs coarse comparison">
+        <thead>
+          <tr><th>Aspect</th><th>Fine-grain micro-agents</th><th>Coarse-grain agents</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Scope</td><td>Single task, strict schema</td><td>Multi-step, flexible scope</td></tr>
+          <tr><td>Best for</td><td>Extraction, validation, compliance</td><td>Planning, ambiguous requests</td></tr>
+          <tr><td>Tradeoff</td><td>More orchestration complexity</td><td>Harder to test and govern</td></tr>
+        </tbody>
+      </table>
+      <p class="lead"><a href="fine-vs-coarse.html">Read the full breakdown →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>Reference architecture</h2>
+      <p class="lead">Request → Router → Agents → Tools → Result. The mesh stays small, typed, and observable.</p>
+      <div class="diagram">
+        <svg viewBox="0 0 760 260" role="img" aria-label="Request flow diagram">
+          <rect x="20" y="100" width="120" height="60" rx="20" fill="#0d7a6d"/>
+          <text x="80" y="135" text-anchor="middle" fill="#f5f4f0" font-family="IBM Plex Mono" font-size="12">Request</text>
+          <rect x="170" y="60" width="140" height="140" rx="22" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="240" y="130" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Router</text>
+          <rect x="340" y="60" width="140" height="140" rx="22" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="410" y="130" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Planner</text>
+          <rect x="520" y="30" width="200" height="200" rx="28" fill="#ffffff" stroke="#1a1a18"/>
+          <text x="620" y="70" text-anchor="middle" fill="#1a1a18" font-family="IBM Plex Mono" font-size="12">Micro-agents</text>
+          <text x="620" y="110" text-anchor="middle" fill="#575450" font-family="IBM Plex Mono" font-size="10">Extractor / Writer</text>
+          <text x="620" y="130" text-anchor="middle" fill="#575450" font-family="IBM Plex Mono" font-size="10">Policy / Validator</text>
+          <rect x="740" y="100" width="120" height="60" rx="20" fill="#1f4d99" transform="translate(-40,0)"/>
+          <text x="760" y="135" text-anchor="middle" fill="#f5f4f0" font-family="IBM Plex Mono" font-size="12">Result</text>
+          <line x1="140" y1="130" x2="170" y2="130" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="310" y1="130" x2="340" y2="130" stroke="#1a1a18" stroke-width="2"/>
+          <line x1="480" y1="130" x2="520" y2="130" stroke="#1a1a18" stroke-width="2"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Example agent catalog</h2>
+      <div class="grid">
+        <div class="card"><span class="pill">SummarizerAgent</span><p>Condenses long content into concise briefings.</p></div>
+        <div class="card"><span class="pill">ExtractorAgent</span><p>Produces structured output with strict schema.</p></div>
+        <div class="card"><span class="pill">ClassifierAgent</span><p>Routes intents with deterministic labels.</p></div>
+        <div class="card"><span class="pill">WriterAgent</span><p>Generates constrained tone and format.</p></div>
+        <div class="card"><span class="pill">ResearchAgent</span><p>Tool-gated research with safety checks.</p></div>
+        <div class="card"><span class="pill">PolicyAgent</span><p>Redacts sensitive data and enforces compliance.</p></div>
+      </div>
+      <p class="lead"><a href="catalog.html">Explore the full catalog →</a></p>
+    </section>
+
+    <section class="section">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>What is a micro-agent?</summary>
+          <p>It is a small, single-purpose agent with explicit inputs, outputs, and guardrails.</p>
+        </details>
+        <details>
+          <summary>How do micro-agents improve reliability?</summary>
+          <p>Failures are isolated, retryable, and easy to observe.</p>
+        </details>
+        <details>
+          <summary>When should I use coarse-grain agents?</summary>
+          <p>Use them for planning and ambiguous tasks, then hand off to fine-grain agents for execution.</p>
+        </details>
+        <details>
+          <summary>How do contracts work?</summary>
+          <p>Each agent has typed input/output schemas, tool permissions, and eval rubrics.</p>
+        </details>
+        <details>
+          <summary>Can I run micro-agents in parallel?</summary>
+          <p>Yes. Fan-out and join patterns are built-in to the mesh design.</p>
+        </details>
+        <details>
+          <summary>Is this approach production-ready?</summary>
+          <p>Yes, because it mirrors proven microservice discipline with observability and governance.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:hello@aimicroagent.com">hello@aimicroagent.com</a>
+      <a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <div>Powered by <a href="https://Athena.Live" target="_blank" rel="noreferrer">Athena.Live</a></div>
+    <div>&copy; 2024 AIMicroAgent.com. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

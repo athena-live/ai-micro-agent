@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Catalog | AIMicroAgent.com</title>
+  <meta name="description" content="Catalog of example micro-agents with inputs, outputs, failure modes, and composition suggestions.">
+  <meta property="og:title" content="Agent Catalog | AIMicroAgent">
+  <meta property="og:description" content="Explore micro-agents by category: routing, extraction, writing, compliance, eval.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://AIMicroAgent.com/catalog.html">
+  <meta property="og:image" content="assets/og-aimicroagent.svg">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="index.html">AIMicroAgent</a>
+      <div class="nav-links">
+        <a href="approach.html">Approach</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="fine-vs-coarse.html">Fine vs Coarse</a>
+        <a href="docs.html">Docs</a>
+      </div>
+      <a class="nav-cta" href="docs.html">Get Starter Template</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="badge">Agent Catalog</span>
+        <h1 class="fade-in">Reusable micro-agents</h1>
+        <p class="fade-in delay-1">Each agent has a purpose, typed inputs/outputs, known failure modes, and composition hints.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="filter-bar" role="tablist" aria-label="Filter agents">
+        <button class="active" data-filter="all" role="tab">All</button>
+        <button data-filter="routing" role="tab">Routing</button>
+        <button data-filter="extraction" role="tab">Extraction</button>
+        <button data-filter="writing" role="tab">Writing</button>
+        <button data-filter="compliance" role="tab">Compliance</button>
+        <button data-filter="eval" role="tab">Eval</button>
+        <label class="badge" style="margin-left:auto;">
+          Search
+          <input type="search" data-search placeholder="Filter by name or purpose" aria-label="Search agents">
+        </label>
+      </div>
+
+      <div class="grid">
+        <article class="card" data-category="routing">
+          <h3>ClassifierAgent</h3>
+          <p><strong>Purpose:</strong> Route intent to the right workflow.</p>
+          <p><strong>Inputs:</strong> user_request</p>
+          <p><strong>Outputs:</strong> intent_label</p>
+          <p><strong>Failure modes:</strong> ambiguous labels</p>
+          <p><strong>Compose with:</strong> Router → Planner</p>
+        </article>
+        <article class="card" data-category="extraction">
+          <h3>ExtractorAgent</h3>
+          <p><strong>Purpose:</strong> Structured output with strict schema.</p>
+          <p><strong>Inputs:</strong> document_text</p>
+          <p><strong>Outputs:</strong> json_payload</p>
+          <p><strong>Failure modes:</strong> missing fields</p>
+          <p><strong>Compose with:</strong> ValidatorAgent</p>
+        </article>
+        <article class="card" data-category="writing">
+          <h3>WriterAgent</h3>
+          <p><strong>Purpose:</strong> Constrained tone and format.</p>
+          <p><strong>Inputs:</strong> outline, tone</p>
+          <p><strong>Outputs:</strong> formatted_copy</p>
+          <p><strong>Failure modes:</strong> tone drift</p>
+          <p><strong>Compose with:</strong> PolicyAgent</p>
+        </article>
+        <article class="card" data-category="routing">
+          <h3>SummarizerAgent</h3>
+          <p><strong>Purpose:</strong> Turn long docs into concise briefs.</p>
+          <p><strong>Inputs:</strong> long_text</p>
+          <p><strong>Outputs:</strong> summary</p>
+          <p><strong>Failure modes:</strong> missing key points</p>
+          <p><strong>Compose with:</strong> WriterAgent</p>
+        </article>
+        <article class="card" data-category="writing">
+          <h3>ResearchAgent</h3>
+          <p><strong>Purpose:</strong> Web research gated by tool policy.</p>
+          <p><strong>Inputs:</strong> question, sources</p>
+          <p><strong>Outputs:</strong> notes</p>
+          <p><strong>Failure modes:</strong> stale sources</p>
+          <p><strong>Compose with:</strong> QA/EvalAgent</p>
+        </article>
+        <article class="card" data-category="eval">
+          <h3>QA/EvalAgent</h3>
+          <p><strong>Purpose:</strong> Self-check with rubric.</p>
+          <p><strong>Inputs:</strong> output, rubric</p>
+          <p><strong>Outputs:</strong> score, notes</p>
+          <p><strong>Failure modes:</strong> rubric mismatch</p>
+          <p><strong>Compose with:</strong> SupervisorAgent</p>
+        </article>
+        <article class="card" data-category="compliance">
+          <h3>PolicyAgent</h3>
+          <p><strong>Purpose:</strong> Redaction + compliance enforcement.</p>
+          <p><strong>Inputs:</strong> candidate_output</p>
+          <p><strong>Outputs:</strong> redacted_output</p>
+          <p><strong>Failure modes:</strong> over-redaction</p>
+          <p><strong>Compose with:</strong> ValidatorAgent</p>
+        </article>
+        <article class="card" data-category="eval">
+          <h3>ValidatorAgent</h3>
+          <p><strong>Purpose:</strong> Validate schema + constraints.</p>
+          <p><strong>Inputs:</strong> schema, output</p>
+          <p><strong>Outputs:</strong> valid, violations</p>
+          <p><strong>Failure modes:</strong> false positives</p>
+          <p><strong>Compose with:</strong> ExtractorAgent</p>
+        </article>
+        <article class="card" data-category="routing">
+          <h3>SupervisorAgent</h3>
+          <p><strong>Purpose:</strong> Monitor, retry, and fallback.</p>
+          <p><strong>Inputs:</strong> agent_status</p>
+          <p><strong>Outputs:</strong> retry_plan</p>
+          <p><strong>Failure modes:</strong> noisy signals</p>
+          <p><strong>Compose with:</strong> QA/EvalAgent</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:hello@aimicroagent.com">hello@aimicroagent.com</a>
+      <a href="https://twitter.com/" target="_blank" rel="noreferrer">Twitter</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+    <div>Powered by <a href="https://Athena.Live" target="_blank" rel="noreferrer">Athena.Live</a></div>
+    <div>&copy; 2024 AIMicroAgent.com. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
